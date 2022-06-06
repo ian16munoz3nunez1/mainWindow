@@ -1,0 +1,35 @@
+[
+     {
+          "idParticula": "3",
+          "origenX": 39,
+          "origenY": 75,
+          "destinoX": 500,
+          "destinoY": 349,
+          "velocidad": "40",
+          "red": 0,
+          "green": 0,
+          "blue": 255
+     },
+     {
+          "idParticula": "1",
+          "origenX": 10,
+          "origenY": 52,
+          "destinoX": 240,
+          "destinoY": 429,
+          "velocidad": "80",
+          "red": 255,
+          "green": 0,
+          "blue": 0
+     },
+     {
+          "idParticula": "2",
+          "origenX": 183,
+          "origenY": 24,
+          "destinoX": 391,
+          "destinoY": 470,
+          "velocidad": "30",
+          "red": 0,
+          "green": 255,
+          "blue": 0
+     }
+]
