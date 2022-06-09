@@ -20,6 +20,18 @@ class Ui_MainWindow(object):
 		self.actionGuardar.setText(u"Guardar")
 		self.actionGuardar.setShortcut("Ctrl+S")
 		self.actionGuardar.setObjectName(u"actionGuardar")
+		
+		self.actionIdAscendente = QAction(MainWindow)
+		self.actionIdAscendente.setText(u"Id ascendente")
+		self.actionIdAscendente.setObjectName(u"actionIdAscendente")
+		
+		self.actionVelocidadAscendente = QAction(MainWindow)
+		self.actionVelocidadAscendente.setText(u"Velocidad ascendente")
+		self.actionVelocidadAscendente.setObjectName(u"actionVelocidadAscendente")
+		
+		self.actionDistanciaDescendente = QAction(MainWindow)
+		self.actionDistanciaDescendente.setText(u"Distancia descendente")
+		self.actionDistanciaDescendente.setObjectName(u"actionDistanciaDescendente")
 ################################################################################ Actions (fin)
 
 		self.centralwidget = QWidget()
@@ -230,10 +242,20 @@ class Ui_MainWindow(object):
 		self.pbLimpiarTabla = QPushButton(self.tab2)
 		self.pbLimpiarTabla.setText(u"Limpiar")
 		self.pbLimpiarTabla.setObjectName(u"pbLimpiarTabla")
+		
+		self.leTblId = QLineEdit(self.tab2)
+		self.leTblId.setPlaceholderText(u"Buscar Id")
+		self.leTblId.setObjectName(u"leTblId")
+		
+		self.pbTblBuscarId = QPushButton(self.tab2)
+		self.pbTblBuscarId.setText(u"Buscar")
+		self.pbTblBuscarId.setObjectName(u"pbTblId")
 
 		self.gridlayoutTab2.addWidget(self.tblParticula, 0, 0, 1, 2)
 		self.gridlayoutTab2.addWidget(self.pbMostrarTabla, 1, 0, 1, 1)
 		self.gridlayoutTab2.addWidget(self.pbLimpiarTabla, 1, 1, 1, 1)
+		self.gridlayoutTab2.addWidget(self.leTblId, 2, 0, 1, 1)
+		self.gridlayoutTab2.addWidget(self.pbTblBuscarId, 2, 1, 1, 1)
 ################################################################################ Tab2 (fin)
 
 ################################################################################ Tab3 (inicio)
@@ -267,8 +289,21 @@ class Ui_MainWindow(object):
 		self.menuArchivo.setObjectName(u"menuArchivo")
 		self.menuArchivo.addAction(self.actionAbrir)
 		self.menuArchivo.addAction(self.actionGuardar)
+		
+		self.menuAscendente = QMenu(self.menubar)
+		self.menuAscendente.setTitle(u"Ascendente")
+		self.menuAscendente.setObjectName(u"menuAscendente")
+		self.menuAscendente.addAction(self.actionIdAscendente)
+		self.menuAscendente.addAction(self.actionVelocidadAscendente)
+		
+		self.menuDescendente = QMenu(self.menubar)
+		self.menuDescendente.setTitle(u"Descendente")
+		self.menuDescendente.setObjectName(u"menuDescendente")
+		self.menuDescendente.addAction(self.actionDistanciaDescendente)
 
 		self.menubar.addAction(self.menuArchivo.menuAction())
+		self.menubar.addAction(self.menuAscendente.menuAction())
+		self.menubar.addAction(self.menuDescendente.menuAction())
 
 		MainWindow.setMenuBar(self.menubar)
 		MainWindow.setStatusBar(self.statusbar)

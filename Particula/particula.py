@@ -71,3 +71,9 @@ class Particula:
 			"Distancia: " + str(self.__distancia) + '\n' +
 			"----------------------------------------------" + '\n'
 		)
+		
+	def __lt__(self, other):
+		return self.idParticula < other.idParticula
+		
+	def sortByVelocidad(self):
+		return self.__velocidad
