@@ -16,10 +16,13 @@ class MainWindow(QMainWindow):
 		self.ui.actionIdAscendente.triggered.connect(self.idAscendente)
 		self.ui.actionVelocidadAscendente.triggered.connect(self.velocidadAscendente)
 		self.ui.actionDistanciaDescendente.triggered.connect(self.distanciaDescendente)
+		self.ui.actionProfundidad.triggered.connect(self.busquedaProfundidad)
+		self.ui.actionAmplitud.triggered.connect(self.busquedaAmplitud)
 
 		self.ui.pbAgregarInicio.clicked.connect(self.agregarInicio)
 		self.ui.pbAgregarFinal.clicked.connect(self.agregarFinal)
 		self.ui.pbMostrar.clicked.connect(self.mostrar)
+		self.ui.pbMostrarGrafo.clicked.connect(self.mostrarGrafo)
 
 		self.ui.pbMostrarTabla.clicked.connect(self.mostrarTabla)
 		self.ui.pbLimpiarTabla.clicked.connect(self.limpiarTabla)
@@ -355,3 +358,42 @@ class MainWindow(QMainWindow):
 			
 		for particula in particulas:
 			self.ui.ptePrint.insertPlainText(str(particula))
+			
+	def mostrarGrafo(self):
+		grafo = self.mainclass.generarGrafo()[1]
+		self.ui.ptePrint.clear()
+		self.ui.ptePrint.insertPlainText(grafo)
+		
+	def busquedaProfundidad(self):
+		inicioX = self.ui.sbInicioX.value()
+		inicioY = self.ui.sbInicioY.value()
+		inicio = (inicioX, inicioY)
+		
+		if not self.mainclass.profundidad(inicio):
+			QMessageBox.warning(
+				self,
+				"Profundidad: Aviso",
+				"Inicio no proporcionados\n(Ve al Tab \"Grafo\" y llena los campos)"
+			)
+		else:
+			self.ui.ptePrint.clear()
+			profundidad = self.mainclass.profundidad(inicio)
+			self.ui.ptePrint.insertPlainText(f"Profundidad\n{profundidad}")
+			self.ui.tabWidget.setCurrentIndex(0)
+		
+	def busquedaAmplitud(self):
+		inicioX = self.ui.sbInicioX.value()
+		inicioY = self.ui.sbInicioY.value()
+		inicio = (inicioX, inicioY)
+		
+		if not self.mainclass.amplitud(inicio):
+			QMessageBox.warning(
+				self,
+				"Amplitud: Aviso",
+				"Inicio no proporcionado\n(Ve al Tab \"Grafo\" y llena los campos)",
+			)
+		else:
+			self.ui.ptePrint.clear()
+			amplitud = self.mainclass.amplitud(inicio)
+			self.ui.ptePrint.insertPlainText(f"Amplitud\n{amplitud}")
+			self.ui.tabWidget.setCurrentIndex(0)

@@ -7,7 +7,7 @@ class Ui_MainWindow(object):
 		if not MainWindow.objectName():
 			MainWindow.setObjectName(u"MainWindow")
 
-		MainWindow.setGeometry(300, 100, 700, 500)
+		MainWindow.setGeometry(300, 80, 800, 650)
 		MainWindow.setWindowTitle(u"Particulas")
 
 ################################################################################ Actions (inicio)
@@ -32,6 +32,16 @@ class Ui_MainWindow(object):
 		self.actionDistanciaDescendente = QAction(MainWindow)
 		self.actionDistanciaDescendente.setText(u"Distancia descendente")
 		self.actionDistanciaDescendente.setObjectName(u"actionDistanciaDescendente")
+		
+		self.actionProfundidad = QAction(MainWindow)
+		self.actionProfundidad.setText(u"Recorrido en profundidad")
+		self.actionProfundidad.setShortcut("Ctrl+P")
+		self.actionProfundidad.setObjectName(u"actionProfundidad")
+		
+		self.actionAmplitud = QAction(MainWindow)
+		self.actionAmplitud.setText(u"Recorrido en amplitud")
+		self.actionAmplitud.setShortcut("Ctrl+W")
+		self.actionAmplitud.setObjectName(u"actionAmplitud")
 ################################################################################ Actions (fin)
 
 		self.centralwidget = QWidget()
@@ -212,6 +222,10 @@ class Ui_MainWindow(object):
 		self.pbMostrar = QPushButton(self.grupoParticula)
 		self.pbMostrar.setText(u"Mostrar")
 		self.pbMostrar.setObjectName(u"pbMostrar")
+		
+		self.pbMostrarGrafo = QPushButton(self.grupoParticula)
+		self.pbMostrarGrafo.setText(u"Mostrar grafo")
+		self.pbMostrarGrafo.setObjectName(u"pbMostrarGrafo")
 
 		self.ptePrint = QPlainTextEdit(self.tab1)
 		self.ptePrint.setObjectName(u"ptePrint")
@@ -226,6 +240,7 @@ class Ui_MainWindow(object):
 		self.gridlayoutgp.addWidget(self.pbAgregarInicio, 5, 0, 1, 2)
 		self.gridlayoutgp.addWidget(self.pbAgregarFinal, 6, 0, 1, 2)
 		self.gridlayoutgp.addWidget(self.pbMostrar, 7, 0, 1, 2)
+		self.gridlayoutgp.addWidget(self.pbMostrarGrafo, 8, 0, 1, 2)
 
 		self.gridlayoutTab1.addWidget(self.grupoParticula, 0, 0, 1, 1)
 		self.gridlayoutTab1.addWidget(self.ptePrint, 0, 1, 1, 1)
@@ -269,10 +284,36 @@ class Ui_MainWindow(object):
 		self.pbLimpiarGV = QPushButton(self.tab3)
 		self.pbLimpiarGV.setText(u"Limpiar")
 		self.pbLimpiarGV.setObjectName(u"pbLimpiarGrafo")
+		
+		self.lInicioX = QLabel(self.tab3)
+		self.lInicioX.setText(u"Inicio X:")
+		self.lInicioX.setAlignment(Qt.AlignCenter)
+		self.lInicioX.setObjectName(u"lGVOrigenX")
+		self.sbInicioX = QSpinBox(self.tab3)
+		self.sbInicioX.setValue(0)
+		self.sbInicioX.setMinimum(0)
+		self.sbInicioX.setMaximum(500)
+		self.sbInicioX.setAccelerated(True)
+		self.sbInicioX.setObjectName(u"sbGVOrigenX")
+		
+		self.lInicioY = QLabel(self.tab3)
+		self.lInicioY.setText(u"Inicio Y:")
+		self.lInicioY.setAlignment(Qt.AlignCenter)
+		self.lInicioY.setObjectName(u"lGVOrigenY")
+		self.sbInicioY = QSpinBox(self.tab3)
+		self.sbInicioY.setValue(0)
+		self.sbInicioY.setMinimum(0)
+		self.sbInicioY.setMaximum(500)
+		self.sbInicioY.setAccelerated(True)
+		self.sbInicioY.setObjectName(u"sbGVOrigenY")
 
-		self.gridlayoutTab3.addWidget(self.gvParticula, 0, 0, 1, 2)
-		self.gridlayoutTab3.addWidget(self.pbDibujarGV, 1, 0, 1, 1)
-		self.gridlayoutTab3.addWidget(self.pbLimpiarGV, 1, 1, 1, 1)
+		self.gridlayoutTab3.addWidget(self.gvParticula, 0, 0, 1, 4)
+		self.gridlayoutTab3.addWidget(self.pbDibujarGV, 1, 0, 1, 2)
+		self.gridlayoutTab3.addWidget(self.pbLimpiarGV, 1, 2, 1, 2)
+		self.gridlayoutTab3.addWidget(self.lInicioX, 2, 0, 1, 1)
+		self.gridlayoutTab3.addWidget(self.sbInicioX, 2, 1, 1, 1)
+		self.gridlayoutTab3.addWidget(self.lInicioY, 2, 2, 1, 1)
+		self.gridlayoutTab3.addWidget(self.sbInicioY, 2, 3, 1, 1)
 ################################################################################ Tab3 (fin)
 
 		self.gridlayout.addWidget(self.tabWidget, 0, 0, 1, 1)
@@ -300,10 +341,17 @@ class Ui_MainWindow(object):
 		self.menuDescendente.setTitle(u"Descendente")
 		self.menuDescendente.setObjectName(u"menuDescendente")
 		self.menuDescendente.addAction(self.actionDistanciaDescendente)
+		
+		self.menuAlgoritmos = QMenu(self.menubar)
+		self.menuAlgoritmos.setTitle(u"Algoritmos")
+		self.menuAlgoritmos.setObjectName(u"menuAlgoritmos")
+		self.menuAlgoritmos.addAction(self.actionProfundidad)
+		self.menuAlgoritmos.addAction(self.actionAmplitud)
 
 		self.menubar.addAction(self.menuArchivo.menuAction())
 		self.menubar.addAction(self.menuAscendente.menuAction())
 		self.menubar.addAction(self.menuDescendente.menuAction())
+		self.menubar.addAction(self.menuAlgoritmos.menuAction())
 
 		MainWindow.setMenuBar(self.menubar)
 		MainWindow.setStatusBar(self.statusbar)

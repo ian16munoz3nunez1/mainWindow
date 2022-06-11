@@ -1,35 +1,112 @@
 [
      {
-          "idParticula": "3",
-          "origenX": 39,
-          "origenY": 75,
-          "destinoX": 500,
-          "destinoY": 349,
-          "velocidad": "40",
-          "red": 0,
-          "green": 0,
-          "blue": 255
-     },
-     {
           "idParticula": "1",
-          "origenX": 10,
-          "origenY": 52,
-          "destinoX": 240,
-          "destinoY": 429,
-          "velocidad": "80",
-          "red": 255,
-          "green": 0,
-          "blue": 0
+          "origenX": 0,
+          "origenY": 100,
+          "destinoX": 100,
+          "destinoY": 100,
+          "velocidad": "90 km/h",
+          "red": 200,
+          "green": 200,
+          "blue": 100
      },
      {
           "idParticula": "2",
-          "origenX": 183,
-          "origenY": 24,
-          "destinoX": 391,
-          "destinoY": 470,
-          "velocidad": "30",
-          "red": 0,
-          "green": 255,
+          "origenX": 0,
+          "origenY": 100,
+          "destinoX": 200,
+          "destinoY": 150,
+          "velocidad": "90 km/h",
+          "red": 200,
+          "green": 60,
+          "blue": 100
+     },
+     {
+          "idParticula": "3",
+          "origenX": 100,
+          "origenY": 100,
+          "destinoX": 300,
+          "destinoY": 0,
+          "velocidad": "45 km/h",
+          "red": 50,
+          "green": 200,
+          "blue": 100
+     },
+     {
+          "idParticula": "4",
+          "origenX": 100,
+          "origenY": 100,
+          "destinoX": 200,
+          "destinoY": 150,
+          "velocidad": "60 km/h",
+          "red": 10,
+          "green": 0,
           "blue": 0
+     },
+     {
+          "idParticula": "5",
+          "origenX": 300,
+          "origenY": 0,
+          "destinoX": 200,
+          "destinoY": 150,
+          "velocidad": "20 km/h",
+          "red": 200,
+          "green": 200,
+          "blue": 100
+     },
+     {
+          "idParticula": "6",
+          "origenX": 300,
+          "origenY": 0,
+          "destinoX": 50,
+          "destinoY": 0,
+          "velocidad": "50 km/h",
+          "red": 200,
+          "green": 60,
+          "blue": 100
+     },
+     {
+          "idParticula": "7",
+          "origenX": 50,
+          "origenY": 0,
+          "destinoX": 0,
+          "destinoY": 100,
+          "velocidad": "25 km/h",
+          "red": 10,
+          "green": 0,
+          "blue": 0
+     },
+     {
+          "idParticula": "8",
+          "origenX": 100,
+          "origenY": 100,
+          "destinoX": 50,
+          "destinoY": 0,
+          "velocidad": "15 km/h",
+          "red": 120,
+          "green": 20,
+          "blue": 20
+     },
+     {
+          "idParticula": "9",
+          "origenX": 0,
+          "origenY": 100,
+          "destinoX": 0,
+          "destinoY": 200,
+          "velocidad": "100 km/h",
+          "red": 0,
+          "green": 80,
+          "blue": 20
+     },
+     {
+          "idParticula": "10",
+          "origenX": 200,
+          "origenY": 150,
+          "destinoX": 0,
+          "destinoY": 200,
+          "velocidad": "10 km/h",
+          "red": 50,
+          "green": 200,
+          "blue": 100
      }
 ]
