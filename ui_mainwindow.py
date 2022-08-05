@@ -20,6 +20,11 @@ class Ui_MainWindow(object):
         self.actionGuardar.setText(u"Guardar")
         self.actionGuardar.setShortcut("Ctrl+S")
         self.actionGuardar.setObjectName(u"actionGuardar")
+
+        self.actionSalir = QAction(MainWindow)
+        self.actionSalir.setText(u"Salir")
+        self.actionSalir.setShortcut("Ctrl+Q")
+        self.actionSalir.setObjectName(u"actionSalir")
         
         self.actionIdAscendente = QAction(MainWindow)
         self.actionIdAscendente.setText(u"Id ascendente")
@@ -213,18 +218,22 @@ class Ui_MainWindow(object):
 
         self.pbAgregarInicio = QPushButton(self.grupoParticula)
         self.pbAgregarInicio.setText(u"Agregar al inicio")
+        self.pbAgregarInicio.setCursor(Qt.PointingHandCursor)
         self.pbAgregarInicio.setObjectName(u"pbAgregarInicio")
 
         self.pbAgregarFinal = QPushButton(self.grupoParticula)
         self.pbAgregarFinal.setText(u"Agregar al final")
+        self.pbAgregarFinal.setCursor(Qt.PointingHandCursor)
         self.pbAgregarFinal.setObjectName(u"pbAgregarFinal")
 
         self.pbMostrar = QPushButton(self.grupoParticula)
         self.pbMostrar.setText(u"Mostrar")
+        self.pbMostrar.setCursor(Qt.PointingHandCursor)
         self.pbMostrar.setObjectName(u"pbMostrar")
         
         self.pbMostrarGrafo = QPushButton(self.grupoParticula)
         self.pbMostrarGrafo.setText(u"Mostrar grafo")
+        self.pbMostrarGrafo.setCursor(Qt.PointingHandCursor)
         self.pbMostrarGrafo.setObjectName(u"pbMostrarGrafo")
 
         self.ptePrint = QPlainTextEdit(self.tab1)
@@ -252,10 +261,12 @@ class Ui_MainWindow(object):
 
         self.pbMostrarTabla = QPushButton(self.tab2)
         self.pbMostrarTabla.setText(u"Mostrar")
+        self.pbMostrarTabla.setCursor(Qt.PointingHandCursor)
         self.pbMostrarTabla.setObjectName(u"pbtblMostrar")
 
         self.pbLimpiarTabla = QPushButton(self.tab2)
         self.pbLimpiarTabla.setText(u"Limpiar")
+        self.pbLimpiarTabla.setCursor(Qt.PointingHandCursor)
         self.pbLimpiarTabla.setObjectName(u"pbLimpiarTabla")
         
         self.leTblId = QLineEdit(self.tab2)
@@ -264,6 +275,7 @@ class Ui_MainWindow(object):
         
         self.pbTblBuscarId = QPushButton(self.tab2)
         self.pbTblBuscarId.setText(u"Buscar")
+        self.pbTblBuscarId.setCursor(Qt.PointingHandCursor)
         self.pbTblBuscarId.setObjectName(u"pbTblId")
 
         self.gridlayoutTab2.addWidget(self.tblParticula, 0, 0, 1, 2)
@@ -279,10 +291,12 @@ class Ui_MainWindow(object):
 
         self.pbDibujarGV = QPushButton(self.tab3)
         self.pbDibujarGV.setText(u"Mostrar")
+        self.pbDibujarGV.setCursor(Qt.PointingHandCursor)
         self.pbDibujarGV.setObjectName(u"pbMostrarGrafo")
 
         self.pbLimpiarGV = QPushButton(self.tab3)
         self.pbLimpiarGV.setText(u"Limpiar")
+        self.pbLimpiarGV.setCursor(Qt.PointingHandCursor)
         self.pbLimpiarGV.setObjectName(u"pbLimpiarGrafo")
         
         self.lInicioX = QLabel(self.tab3)
@@ -330,6 +344,7 @@ class Ui_MainWindow(object):
         self.menuArchivo.setObjectName(u"menuArchivo")
         self.menuArchivo.addAction(self.actionAbrir)
         self.menuArchivo.addAction(self.actionGuardar)
+        self.menuArchivo.addAction(self.actionSalir)
         
         self.menuAscendente = QMenu(self.menubar)
         self.menuAscendente.setTitle(u"Ascendente")

@@ -1,5 +1,7 @@
+from PyQt5.QtCore import QEvent
 from PyQt5.QtGui import QPen, QColor
 from PyQt5.QtWidgets import QMainWindow, QFileDialog, QMessageBox, QTableWidgetItem, QGraphicsScene
+from PyQt5.QtWidgets import QGraphicsDropShadowEffect
 from ui_mainwindow import Ui_MainWindow
 from Particula.mainclass import MainClass
 from Particula.particula import Particula
@@ -13,6 +15,7 @@ class MainWindow(QMainWindow):
 
         self.ui.actionGuardar.triggered.connect(self.guardarArchivo)
         self.ui.actionAbrir.triggered.connect(self.abrirArchivo)
+        self.ui.actionSalir.triggered.connect(self.close)
         self.ui.actionIdAscendente.triggered.connect(self.idAscendente)
         self.ui.actionVelocidadAscendente.triggered.connect(self.velocidadAscendente)
         self.ui.actionDistanciaDescendente.triggered.connect(self.distanciaDescendente)
@@ -32,6 +35,35 @@ class MainWindow(QMainWindow):
         self.ui.pbLimpiarGV.clicked.connect(self.limpiarGraphicsView)
         self.scene = QGraphicsScene()
         self.ui.gvParticula.setScene(self.scene)
+
+        self.sombra = QGraphicsDropShadowEffect(self)
+        self.sombra.setXOffset(0)
+        self.sombra.setYOffset(0)
+        self.sombra.setColor(QColor(0, 255, 255, 255))
+
+        self.ui.leid.installEventFilter(self)
+        self.ui.leVelocidad.installEventFilter(self)
+        self.ui.leTblId.installEventFilter(self)
+
+        self.ui.pbAgregarInicio.installEventFilter(self)
+        self.ui.pbAgregarFinal.installEventFilter(self)
+        self.ui.pbMostrar.installEventFilter(self)
+        self.ui.pbMostrarGrafo.installEventFilter(self)
+        self.ui.pbMostrarTabla.installEventFilter(self)
+        self.ui.pbMostrarTabla.installEventFilter(self)
+        self.ui.pbLimpiarTabla.installEventFilter(self)
+        self.ui.pbTblBuscarId.installEventFilter(self)
+        self.ui.pbDibujarGV.installEventFilter(self)
+        self.ui.pbLimpiarGV.installEventFilter(self)
+        self.ui.sbOrigenx.installEventFilter(self)
+        self.ui.sbOrigeny.installEventFilter(self)
+        self.ui.sbDestinox.installEventFilter(self)
+        self.ui.sbDestinoy.installEventFilter(self)
+        self.ui.sbRed.installEventFilter(self)
+        self.ui.sbGreen.installEventFilter(self)
+        self.ui.sbBlue.installEventFilter(self)
+        self.ui.sbInicioX.installEventFilter(self)
+        self.ui.sbInicioY.installEventFilter(self)
 
     def guardarArchivo(self):
         ubicacion = QFileDialog.getSaveFileName(
@@ -397,3 +429,155 @@ class MainWindow(QMainWindow):
             amplitud = self.mainclass.amplitud(inicio)
             self.ui.ptePrint.insertPlainText(f"Amplitud\n{amplitud}")
             self.ui.tabWidget.setCurrentIndex(0)
+
+    def eventFilter(self, object, event):
+        if object == self.ui.leid and event.type() == QEvent.Enter:
+            self.sombra.setBlurRadius(50)
+            self.ui.leid.setGraphicsEffect(self.sombra)
+        if object == self.ui.leid and event.type() == QEvent.Leave:
+            self.sombra.setBlurRadius(0)
+            self.ui.leid.setGraphicsEffect(self.sombra)
+
+
+        if object == self.ui.leVelocidad and event.type() == QEvent.Enter:
+            self.sombra.setBlurRadius(50)
+            self.ui.leVelocidad.setGraphicsEffect(self.sombra)
+        if object == self.ui.leVelocidad and event.type() == QEvent.Leave:
+            self.sombra.setBlurRadius(0)
+            self.ui.leVelocidad.setGraphicsEffect(self.sombra)
+
+        if object == self.ui.leTblId and event.type() == QEvent.Enter:
+            self.sombra.setBlurRadius(50)
+            self.ui.leTblId.setGraphicsEffect(self.sombra)
+        if object == self.ui.leTblId and event.type() == QEvent.Leave:
+            self.sombra.setBlurRadius(0)
+            self.ui.leTblId.setGraphicsEffect(self.sombra)
+
+        if object == self.ui.pbAgregarInicio and event.type() == QEvent.Enter:
+            self.sombra.setBlurRadius(50)
+            self.ui.pbAgregarInicio.setGraphicsEffect(self.sombra)
+        if object == self.ui.pbAgregarInicio and event.type() == QEvent.Leave:
+            self.sombra.setBlurRadius(0)
+            self.ui.pbAgregarInicio.setGraphicsEffect(self.sombra)
+
+        if object == self.ui.pbAgregarFinal and event.type() == QEvent.Enter:
+            self.sombra.setBlurRadius(50)
+            self.ui.pbAgregarFinal.setGraphicsEffect(self.sombra)
+        if object == self.ui.pbAgregarFinal and event.type() == QEvent.Leave:
+            self.sombra.setBlurRadius(0)
+            self.ui.pbAgregarFinal.setGraphicsEffect(self.sombra)
+
+        if object == self.ui.pbMostrar and event.type() == QEvent.Enter:
+            self.sombra.setBlurRadius(50)
+            self.ui.pbMostrar.setGraphicsEffect(self.sombra)
+        if object == self.ui.pbMostrar and event.type() == QEvent.Leave:
+            self.sombra.setBlurRadius(0)
+            self.ui.pbMostrar.setGraphicsEffect(self.sombra)
+
+        if object == self.ui.pbMostrarGrafo and event.type() == QEvent.Enter:
+            self.sombra.setBlurRadius(50)
+            self.ui.pbMostrarGrafo.setGraphicsEffect(self.sombra)
+        if object == self.ui.pbMostrarGrafo and event.type() == QEvent.Leave:
+            self.sombra.setBlurRadius(0)
+            self.ui.pbMostrarGrafo.setGraphicsEffect(self.sombra)
+
+        if object == self.ui.pbMostrarTabla and event.type() == QEvent.Enter:
+            self.sombra.setBlurRadius(50)
+            self.ui.pbMostrarTabla.setGraphicsEffect(self.sombra)
+        if object == self.ui.pbMostrarTabla and event.type() == QEvent.Leave:
+            self.sombra.setBlurRadius(0)
+            self.ui.pbMostrarTabla.setGraphicsEffect(self.sombra)
+
+        if object == self.ui.pbLimpiarTabla and event.type() == QEvent.Enter:
+            self.sombra.setBlurRadius(50)
+            self.ui.pbLimpiarTabla.setGraphicsEffect(self.sombra)
+        if object == self.ui.pbLimpiarTabla and event.type() == QEvent.Leave:
+            self.sombra.setBlurRadius(0)
+            self.ui.pbLimpiarTabla.setGraphicsEffect(self.sombra)
+
+        if object == self.ui.pbTblBuscarId and event.type() == QEvent.Enter:
+            self.sombra.setBlurRadius(50)
+            self.ui.pbTblBuscarId.setGraphicsEffect(self.sombra)
+        if object == self.ui.pbTblBuscarId and event.type() == QEvent.Leave:
+            self.sombra.setBlurRadius(0)
+            self.ui.pbTblBuscarId.setGraphicsEffect(self.sombra)
+
+        if object == self.ui.pbDibujarGV and event.type() == QEvent.Enter:
+            self.sombra.setBlurRadius(50)
+            self.ui.pbDibujarGV.setGraphicsEffect(self.sombra)
+        if object == self.ui.pbDibujarGV and event.type() == QEvent.Leave:
+            self.sombra.setBlurRadius(0)
+            self.ui.pbDibujarGV.setGraphicsEffect(self.sombra)
+
+        if object == self.ui.pbLimpiarGV and event.type() == QEvent.Enter:
+            self.sombra.setBlurRadius(50)
+            self.ui.pbLimpiarGV.setGraphicsEffect(self.sombra)
+        if object == self.ui.pbLimpiarGV and event.type() == QEvent.Leave:
+            self.sombra.setBlurRadius(0)
+            self.ui.pbLimpiarGV.setGraphicsEffect(self.sombra)
+
+        if object == self.ui.sbOrigenx and event.type() == QEvent.Enter:
+            self.sombra.setBlurRadius(50)
+            self.ui.sbOrigenx.setGraphicsEffect(self.sombra)
+        if object == self.ui.sbOrigenx and event.type() == QEvent.Leave:
+            self.sombra.setBlurRadius(0)
+            self.ui.sbOrigenx.setGraphicsEffect(self.sombra)
+
+        if object == self.ui.sbOrigeny and event.type() == QEvent.Enter:
+            self.sombra.setBlurRadius(50)
+            self.ui.sbOrigeny.setGraphicsEffect(self.sombra)
+        if object == self.ui.sbOrigeny and event.type() == QEvent.Leave:
+            self.sombra.setBlurRadius(0)
+            self.ui.sbOrigeny.setGraphicsEffect(self.sombra)
+
+        if object == self.ui.sbDestinox and event.type() == QEvent.Enter:
+            self.sombra.setBlurRadius(50)
+            self.ui.sbDestinox.setGraphicsEffect(self.sombra)
+        if object == self.ui.sbDestinox and event.type() == QEvent.Leave:
+            self.sombra.setBlurRadius(0)
+            self.ui.sbDestinox.setGraphicsEffect(self.sombra)
+
+        if object == self.ui.sbDestinoy and event.type() == QEvent.Enter:
+            self.sombra.setBlurRadius(50)
+            self.ui.sbDestinoy.setGraphicsEffect(self.sombra)
+        if object == self.ui.sbDestinoy and event.type() == QEvent.Leave:
+            self.sombra.setBlurRadius(0)
+            self.ui.sbDestinoy.setGraphicsEffect(self.sombra)
+
+        if object == self.ui.sbRed and event.type() == QEvent.Enter:
+            self.sombra.setBlurRadius(50)
+            self.ui.sbRed.setGraphicsEffect(self.sombra)
+        if object == self.ui.sbRed and event.type() == QEvent.Leave:
+            self.sombra.setBlurRadius(0)
+            self.ui.sbRed.setGraphicsEffect(self.sombra)
+
+        if object == self.ui.sbGreen and event.type() == QEvent.Enter:
+            self.sombra.setBlurRadius(50)
+            self.ui.sbGreen.setGraphicsEffect(self.sombra)
+        if object == self.ui.sbGreen and event.type() == QEvent.Leave:
+            self.sombra.setBlurRadius(0)
+            self.ui.sbGreen.setGraphicsEffect(self.sombra)
+
+        if object == self.ui.sbBlue and event.type() == QEvent.Enter:
+            self.sombra.setBlurRadius(50)
+            self.ui.sbBlue.setGraphicsEffect(self.sombra)
+        if object == self.ui.sbBlue and event.type() == QEvent.Leave:
+            self.sombra.setBlurRadius(0)
+            self.ui.sbBlue.setGraphicsEffect(self.sombra)
+
+        if object == self.ui.sbInicioX and event.type() == QEvent.Enter:
+            self.sombra.setBlurRadius(50)
+            self.ui.sbInicioX.setGraphicsEffect(self.sombra)
+        if object == self.ui.sbInicioX and event.type() == QEvent.Leave:
+            self.sombra.setBlurRadius(0)
+            self.ui.sbInicioX.setGraphicsEffect(self.sombra)
+
+        if object == self.ui.sbInicioY and event.type() == QEvent.Enter:
+            self.sombra.setBlurRadius(50)
+            self.ui.sbInicioY.setGraphicsEffect(self.sombra)
+        if object == self.ui.sbInicioY and event.type() == QEvent.Leave:
+            self.sombra.setBlurRadius(0)
+            self.ui.sbInicioY.setGraphicsEffect(self.sombra)
+
+        return False
+
